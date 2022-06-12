@@ -1,0 +1,60 @@
+/* google font字體 */
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;1,100;1,300&display=swap'); */
+/* 將字體粗細做刪減 -> config配置*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap');
+
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+@layer components {
+    .btn-main {
+        @apply bg-blue-500;
+        @apply rounded;
+        @apply border;
+        @apply py-3;
+        @apply px-5;
+        @apply border-blue-50;
+    }
+}
+/* XXXsearch: default theme 找到預設樣式 */
+/* https://github.com/tailwindlabs/tailwindcss/blob/master/stubs/defaultConfig.stub.js */
+@layer components {
+    .card {
+      background-color: theme('colors.white');
+      border-radius: theme('borderRadius.xl');
+      /* padding: theme('spacing.3'); */
+      /* @apply overflow-hidden */
+      /* @apply shadow-3xl  不能apply 自定義*/
+    }
+    .section-container {
+      padding-right: calc(100vw * 0.1);
+      /* 原理：先分配給padding 再進行grid切 */
+      padding-left: 60px;
+    }
+    /* 斷點不同樣式的命名 */
+    .nav-container-80 {
+      padding-left: calc(100vw * 0.1);
+    }
+    .nav-container-90 {
+      padding-left: calc(100vw * 0.05);
+    }
+    .animate-appear {
+      animation: appear .3s cubic-bezier(0.4, 0, 0.6, 1);
+    }
+  }
+
+  /* 需放於外面 */
+  @keyframes appear {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
