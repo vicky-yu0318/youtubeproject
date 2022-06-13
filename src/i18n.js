@@ -25,5 +25,7 @@ export default createI18n({
   locale: 'en',
   // fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || 'en',
   fallbackLocale: 'en',
+  // 必須加下面一段
+  globalInjection: true,
   messages: loadLocaleMessages()
 })

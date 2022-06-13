@@ -8,7 +8,8 @@ module.exports = {
   theme: {
     // - 改預設
     fontFamily: {
-      sans: [ 'Kdam Thmor Pro','Roboto', 'Noto Sans TC', '微軟正黑體', 'sans-serif']
+      // sans: [ 'Kdam Thmor Pro','Roboto', 'Noto Sans TC', '微軟正黑體', 'sans-serif']
+      sans: [ 'Noto Sans TC', '微軟正黑體', 'sans-serif']
     },
     // - 增加擴充
     extend: {
@@ -23,8 +24,9 @@ module.exports = {
         },
         // 客制 bg-custcolor-primary
         custcolor:{
+          main: '#5D86AF',
           primary: '#26252F',
-          'light-primary' : '#787878',
+          'light-primary': '#787878',
           secondary: '#D38E4E',
           'light-secondary': '#DCA46E',
           'gray': '#B7B7B7',

@@ -13,13 +13,16 @@
 @tailwind utilities;
 
 @layer components {
-    .btn-main {
-        @apply bg-blue-500;
+    /* .btn-main {
+        background-color: #5D86AF;
         @apply rounded;
         @apply border;
         @apply py-3;
         @apply px-5;
         @apply border-blue-50;
+    } */
+    .btn-main {
+      background-color: #5D86AF;
     }
 }
 /* XXXsearch: default theme 找到預設樣式 */
@@ -39,17 +42,15 @@
     }
     /* 斷點不同樣式的命名 */
     .nav-container-80 {
-      padding-left: calc(100vw * 0.1);
-    }
-    .nav-container-90 {
-      padding-left: calc(100vw * 0.05);
+      /* sm:pl-[calc(100vw * 0.1)] md:pl-[calc(100vw * 0.1)] */
+      /* padding-left: calc(100vw * 0.1); */
     }
     .animate-appear {
       animation: appear .3s cubic-bezier(0.4, 0, 0.6, 1);
     }
   }
 
-  /* 需放於外面 */
+  /* 動畫劇本需放於外面 */
   @keyframes appear {
     0% {
       opacity: 0;
