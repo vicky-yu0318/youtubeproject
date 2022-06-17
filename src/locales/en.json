@@ -1,0 +1,8 @@
+{
+  "message": "hello i18n !!",
+  "header": {
+    "login": "login",
+    "sign": "signup",
+    "button": "button"
+  }
+}

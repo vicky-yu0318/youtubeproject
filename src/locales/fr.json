@@ -1,0 +1,8 @@
+{
+  "message": "bonjour i18n !!",
+  "header": {
+    "login": "connexion",
+    "sign": "Déconnexion",
+    "button": "bouton"
+  }
+}

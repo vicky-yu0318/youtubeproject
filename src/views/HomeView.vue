@@ -13,9 +13,9 @@
           <a
             href=""
             class="border-[3px] border-cyan-500 py-3 px-6 hover:border-yellow-700 cursor-pointer transition duration-[1000ms] ease-linear hidden md:block"
-            >{{ $t('header.login') }}</a
+            >{{ $t('message') }}</a
           >
-          <a href="" class="hidden md:block active:text-blue-600">sign up</a>
+          <a href="" class="hidden md:block active:text-blue-600">{{ $t('header.login') }}</a>
           <button class="btn-main hidden md:block">按鈕</button>
         </div>
         <!-- hamburger -->

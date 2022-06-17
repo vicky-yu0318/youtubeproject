@@ -1,5 +1,6 @@
 <template>
   <div class="index">
+    <CoinSwitch></CoinSwitch>
     <header class=" h-[76px] shadow-md fixed right-0 left-0 z-50 bg-white">
       <div class="w-[97.5%]  mx-auto flex items-center justify-between h-full">
         <!-- main-image -->
@@ -57,9 +58,9 @@
             <div class="images  pt-8 after:content-[''] after:w-full after:h-[1px] after:mt-8
             after:bg-custcolor-gray after:block after:opacity-[0.25]
             ">
-              <div class="flex gap-5">
-                <img src="@/assets/images/home/img_example1.png" alt="">
-                <img src="@/assets/images/home/img_example2.png" alt="">
+              <div class="flex gap-5 justify-between">
+                <div class="w-full"><img src="@/assets/images/home/img_example1.png" alt=""></div>
+                <div class="w-full"><img src="@/assets/images/home/img_example2.png" alt=""></div>
               </div>
             </div>
             <div class=" flex justify-between items-center pt-2 ">
@@ -87,6 +88,8 @@
 </template>
 
 <script>
+import CoinSwitch from '../components/CoinSwitch.vue'
+
 export default {
   data () {
     return {
@@ -104,6 +107,9 @@ export default {
 
       ]
     }
+  },
+  components: {
+    CoinSwitch
   }
 }
 </script>
