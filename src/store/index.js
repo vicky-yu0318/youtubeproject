@@ -1,19 +1,24 @@
 import { createStore } from 'vuex'
 
-// store composition是原寫法 Ｘreturn
 export default createStore({
-  strict: true,
+  strict: false,
   // 嚴格模式 => 如果非同步事件寫在mutation 會報錯
+  // 寬鬆模式 => 解決[vuex] do not mutate vuex store state outside mutation handlers.問題
   state: {
     locales: ['tw', 'us', 'cn'],
     locale: 'tw',
     coins: ['TWD', 'USD', 'CNY'],
     coin: 'TWD',
-    dark: 'false'
+    isDark: localStorage.getItem('maintheme'),
+    windowWidth: 0,
+    isMobile: false,
+    isTablet: false,
   },
+  // JSON.parse(localStorage.getItem("maintheme"))
+  // isDark = localStorage.getItem('maintheme')
+
   getters: {
   },
-  // 改變state
   mutations: {
     SET_LANG (state, locale) {
       if (state.locales.includes(locale)) {
@@ -26,11 +31,18 @@ export default createStore({
       }
     },
     SET_DARK (state, payload) {
-      state.dark = payload
-      if ( process.client ) {
-        localStorage.setItem("dark", state.dark)
-      }
-    }, 
+      state.isDark = payload
+      // if ( process.client ) {
+        localStorage.setItem("maintheme", state.isDark)
+      // }
+    },
+    SET_WINDOWWIDTH(state, data) {
+      state.windowWidth = data
+    },
+    SET_ISMOBILE(state, data) {
+      state.isMobile = data[0]
+      state.isTablet = data[1]
+    }
   },
   actions: {
     // 固定的context = {state, commit, dispatch, getters}

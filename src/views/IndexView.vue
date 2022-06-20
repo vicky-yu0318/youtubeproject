@@ -1,6 +1,11 @@
 <template>
   <div class="index">
+    store目前感測寬： {{ $store.state.windowWidth }}
+   {{isMobile}}   {{isTablet}}
     <CoinSwitch></CoinSwitch>
+    <DarkSwitch></DarkSwitch>
+    <LangSwitch></LangSwitch>
+    <!-- <LangSwitch></LangSwitch> -->
     <header class=" h-[76px] shadow-md fixed right-0 left-0 z-50 bg-white">
       <div class="w-[97.5%]  mx-auto flex items-center justify-between h-full">
         <!-- main-image -->
@@ -89,13 +94,23 @@
 
 <script>
 import CoinSwitch from '../components/CoinSwitch.vue'
+import DarkSwitch from '../components/DarkSwitch.vue'
+import LangSwitch from '../components/LangSwitch.vue'
+import { useStore } from 'vuex'
+// import store from '@/store'
+import { onMounted, reactive, computed } from 'vue'
 
 export default {
-  data () {
-    return {
-      // headerLink: ['市場行情','場外交易']
-      currencyData: [
-        {
+  // components不放在setup中
+   components: {
+    CoinSwitch,
+    DarkSwitch,
+    LangSwitch
+  },
+  setup () {
+    const store = useStore()
+    const currencyData = reactive([
+      {
           image: require('@/assets/images/home/ic_coin_btc.png'),
           cate:'',
           currency: '',
@@ -104,12 +119,37 @@ export default {
           rate_of_return: '',
           amount: ''
         }
+    ])
 
-      ]
+   // 拉動不會觸發
+    const handleResize =  () => {
+      store.commit('SET_WINDOWWIDTH', window.innerWidth)
+      if (window.innerWidth <= 1920 && window.innerWidth >= 768) {
+        // console.log(window.innerWidth)
+        // mobile XX  tablet XX
+        store.commit('SET_ISMOBILE', [false, false])
+      } else if (window.innerWidth < 768) {
+        store.commit('SET_ISMOBILE', [true, false])
+      } else {
+        store.commit('SET_ISMOBILE', [false, false])
+      }
     }
-  },
-  components: {
-    CoinSwitch
+
+    // 一定要加computed
+    let isMobile = computed(() => store.state.isMobile)
+    let isTablet = computed(() => store.state.isTablet)
+
+    onMounted (() => {
+      // 此方法不用return 出去 因為已在mounted用掉
+      handleResize()
+    })
+
+
+    return {
+      currencyData,
+      isMobile,
+      isTablet
+    }
   }
 }
 </script>
