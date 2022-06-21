@@ -11,7 +11,7 @@
       <option v-for="item in coinOptions" :key="item.value">{{ item.text }}</option>
     </select>
     <div>store的 幣別資料{{ $store.state.coin }}</div>
-    <div>   store的 夜淺模式：{{ isDark }}</div>
+    <div>store的 夜淺模式：{{ isDark }}</div>
  
   </div>
 </template>

@@ -1,9 +1,16 @@
 import { createStore } from 'vuex'
+// 外部(store > modules) 引入
+import user from './modules/user'
 
 export default createStore({
   strict: false,
   // 嚴格模式 => 如果非同步事件寫在mutation 會報錯
   // 寬鬆模式 => 解決[vuex] do not mutate vuex store state outside mutation handlers.問題
+
+  // 外部(store > modules) 引入
+  modules: {
+    user
+  },
   state: {
     locales: ['tw', 'us', 'cn'],
     locale: 'tw',
@@ -49,7 +56,5 @@ export default createStore({
     // updateLoading (context, payload) {
     //   context.commit('LOADING', payload)
     // }
-  },
-  modules: {
   }
 })

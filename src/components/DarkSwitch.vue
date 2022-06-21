@@ -82,7 +82,7 @@ export default {
             document.documentElement.classList.add('dark')
             refMoon.value.classList.add('hidden')
             return
-          } 
+          }
           refSun.value.classList.add('hidden')
         }
         onMounted(() => {
