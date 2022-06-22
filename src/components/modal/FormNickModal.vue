@@ -31,7 +31,7 @@
     </div>
 
     <!-- 輸入完表單資料後，成功或失敗的回傳視窗（第二個） -->
-    <bodyFooterModal ref="bodyFooterModal" v-show="bodyFooterModal" ></bodyFooterModal>
+    <bodyFooterModal ref="bodyFooterModal" ></bodyFooterModal>
 
   </div>
 </template>
@@ -58,7 +58,7 @@ export default {
 
     //===========================
     //  * 彈跳視窗處理(第一個)
-    const isModalShow = ref(true)
+    const isModalShow = ref(null)
     const closeModal = () => {
       isModalShow.value = false
     }
@@ -67,7 +67,7 @@ export default {
     }
 
     // * 彈跳視窗處理(第二個)
-    const bodyFooterModal = ref(false)
+    const bodyFooterModal = ref(null)
     const openBodyFooterModal = () => {
       bodyFooterModal.value.openModal();
       pushMessageState(true, '來自form 第二個彈跳視窗')
@@ -75,7 +75,8 @@ export default {
 
     onMounted(() => {
       // 之後改放於上方openBodyFooterModal觸發時
-      // pushMessageState(true, '來自form 第二個彈跳視窗')
+      console.log(bodyFooterModal.value);
+      pushMessageState(true, '來自form 第二個彈跳視窗')
     })
     //==================================
 
@@ -84,7 +85,7 @@ export default {
     const nickNameChange = computed( () => store.state.user.nickNameChange )
 
     const submit = async () => {
-      console.log('dd');
+      openModal()
       // try {
       //   if ( nickNameChange.value === true ) {
       //     alert('已修改過')

@@ -5,18 +5,16 @@
   >
     <div class="w-screen h-screen flex justify-center items-center">
       <div
-        class="w-11/12 min-w-[300px] max-w-[450px] mx-auto my-0 px-7 py-5 bg-white rounded-lg shadow-lg"
+        class="w-11/12 min-w-[300px] max-w-[450px] mx-auto  bg-white rounded-lg shadow-lg
+        overflow-hidden"
       >
-        <!-- :class="size" -->
-        <!-- header slot給取用 -->
-        <section class="relative pb-[10px]">
-          <slot name="header" class="font-bold lg:text-2xl text-center ml-auto"
-            >header~~~~~</slot
-          >
-          <!-- :class="textColor ? textColor : 'text-black'" -->
+        <!-- :class="textColor ? textColor : 'text-black'" -->
+        <section class="font-bold lg:text-2xl text-center ml-auto bg-blue-100 text-blue-700 py-3">
+          <!-- header slot給取用 --> <!-- slot內不能直接寫class --> 
+          <slot name="header">header~~~~~</slot>
         </section>
         <!-- body slot給取用 -->
-        <section class="mx-auto my-5">
+        <section class="mx-auto p-5">
           <slot name="body">Content~~~~</slot>
         </section>
         <!-- footer slot給取用 -->
@@ -24,7 +22,7 @@
           <slot name="footer">
             <button
               @click="closeModal"
-              class="w-full h-[48px] px-4 py-2 rounded-md text-white bg-custcolor-primary-blue border-custcolor-primary-blue disabled:opacity-50"
+              class="w-full h-[48px] px-4 py-2 text-white bg-custcolor-primary-blue border-custcolor-primary-blue disabled:opacity-50"
             >
               關閉
             </button>
@@ -41,7 +39,8 @@ import { ref } from "vue";
 export default {
   //   props: ["title", "size", "textColor"],
   setup() {
-    const isModalShow = ref(true);
+    // 預設先關閉
+    const isModalShow = ref(false);
 
     //===================
     //  *  modal open

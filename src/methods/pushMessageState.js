@@ -1,6 +1,6 @@
 import eventBus from '@/methods/eventBus.js'
 
-export default function (res, title = '更新', content='預設內容') {
+export default function (res, title = '沒傳title給預設內容', content='沒傳內容給預設內容') {
   if (res) {
     console.log('成功至pushMessageState.js', title)
     eventBus.emit('push-message', {
