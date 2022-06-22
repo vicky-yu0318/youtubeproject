@@ -9,12 +9,17 @@
     "i18n:report": "vue-cli-service i18n:report --src \"./src/**/*.?(js|vue)\" --locales \"./src/locales/**/*.json\""
   },
   "dependencies": {
+    "@vee-validate/i18n": "^4.5.11",
+    "@vee-validate/rules": "^4.5.11",
     "autoprefixer": "^10",
+    "axios": "^0.27.2",
     "chart.js": "^3.8.0",
     "core-js": "^3.8.3",
     "mitt": "^3.0.0",
     "postcss": "^8",
     "tailwindcss": "^3",
+    "vee-validate": "^4.5.11",
+    "vee-validate-rules": "^0.1.20",
     "vue": "^3.2.13",
     "vue-i18n": "^9.1.10",
     "vue-loading-overlay": "^5.0.3",

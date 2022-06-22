@@ -9,27 +9,32 @@ const routes = [
   {
     path: '/',
     name: 'index',
-    component: () => import(/* webpackChunkName: "about" */ '../views/IndexView.vue')
+    component: () => import('../views/IndexView.vue')
   },
   {
     path: '/chart',
     name: 'chart',
-    component: () => import(/* webpackChunkName: "about" */ '../views/ChartView.vue')
+    component: () => import('../views/ChartView.vue')
   },
   {
     path: '/AModal',
     name: 'AModal',
-    component: () => import(/* webpackChunkName: "about" */ '../views/AModalView.vue')
+    component: () => import('../views/AModalView.vue')
   },
   {
     path: '/BModal',
     name: 'BModal',
-    component: () => import(/* webpackChunkName: "about" */ '../views/BModalView.vue')
+    component: () => import('../views/BModalView.vue')
   },
   {
     path: '/form',
     name: 'form',
-    component: () => import(/* webpackChunkName: "about" */ '../views/FormView.vue')
+    component: () => import('../views/FormView.vue')
+  },
+  {
+    path: '/form-pratice',
+    name: 'form-pratice',
+    component: () => import('../views/PracticeForm.vue')
   }
 ]
 

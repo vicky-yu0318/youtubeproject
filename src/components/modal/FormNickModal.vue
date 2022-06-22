@@ -1,4 +1,5 @@
 <template>
+  <!-- 打api 在這做  props放子層 -->
   <div>
     <div class="w-100% h-100% fixed top-0 left-0 z-50 bg-black bg-opacity-50 table" v-show="isModalShow">
       <div class="w-screen h-screen flex justify-center items-center">
@@ -9,7 +10,6 @@
 
           <section class="mx-auto my-5">
             <div class="text-custcolor-light-primary">
-              <!-- {{ $t('modal.nickDepiction') }} -->
               內容
             </div>
           </section>
@@ -18,10 +18,10 @@
           <section class="pt-5 text-center">
             <div>
               <button class="w-[108px] h-[48px] ml-2 px-4 py-2 rounded-md text-custcolor-primary-blue bg-white border-[1px] border-custcolor-primary-blue disabled:opacity-50"
-                @click="closeModal()">cancel
+                @click="closeModal">cancel
               </button>
               <button class="w-[108px] h-[48px] ml-2 px-4 py-2 rounded-md text-white bg-custcolor-primary-blue border-custcolor-primary-blue disabled:opacity-50"
-                @click="submit()"
+                @click="submit"
                 >submit
               </button>
             </div>
@@ -37,23 +37,24 @@
 </template>
 
 <script>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed  } from 'vue'
 import { useStore } from 'vuex'
 import bodyFooterModal from './bodyFooterModal.vue'
 import pushMessageState from '@/methods/pushMessageState'
-// import { modifyNicknameApi } from '~/api/user'
+// import { modifyNicknameApi } from '@/methods/apiMethods/user'
 
 export default {
-  name: 'nickModal',
   components: {
     bodyFooterModal,
   },
   // props: {
-  //   nickName: String,
+  //   innerNickName: String,
   //   default: null
   // },
   setup() {
     // props, {}
+    // const { innerNickName } = toRefs(props)
+    // console.log(props.innerNickName)
     const store = useStore()
 
     //===========================
@@ -73,19 +74,23 @@ export default {
       pushMessageState(true, '來自form 第二個彈跳視窗')
     }
 
-    onMounted(() => {
-      // 之後改放於上方openBodyFooterModal觸發時
-      console.log(bodyFooterModal.value);
-      pushMessageState(true, '來自form 第二個彈跳視窗')
-    })
+    const submit = async () => {
+      console.log('submit');
+      // 送出後=> 建立要傳送的資料變數 => 使用從methods 引進來的方法集user.js，"準備" 打api return req("post", 'api/addModifyUserNickname', data) 給資料(還沒給api path)
+      // => 依據axiosInstance.js  已定義好內容。透過api站點 api 開打
+      // pushMessageState(true, '來自form 第二個彈跳視窗')
+      // let temp =  { nickname: 'vicky',  token: 3333 }
+      // const { data } = await modifyNicknameApi(temp)
+      // console.log(data);
+    }
     //==================================
 
     //  * 表單驗證處理
     const token = computed( () => store.state.user.userToken)
     const nickNameChange = computed( () => store.state.user.nickNameChange )
 
-    const submit = async () => {
-      openModal()
+    // const submit = async () => {
+    //   // openModal()
       // try {
       //   if ( nickNameChange.value === true ) {
       //     alert('已修改過')
@@ -103,7 +108,7 @@ export default {
       // } catch (error) {
       //   console.log('error:', error)
       // }
-    }
+    // }
     //===================================
 
 
