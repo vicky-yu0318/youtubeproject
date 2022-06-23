@@ -5,8 +5,9 @@ import axios from "axios"
 // axios.defaults.headers['Content-Type'] = 'application/json;charset=utf-8'
 
 // baseURL是API的主要Domain
+// console.log(process.env.VUE_APP_PATH)
 const axiosInstance = axios.create({
-  baseURL: process.env.API_URL,
+  baseURL: process.env.VUE_APP_PATH,
     // baseURL: process.env.BASE_URL || process.env.API_URL, // url = base url + request url
     // withCredentials: true, // send cookies when cross-domain requests
   timeout: 120 * 1000 // request timeout

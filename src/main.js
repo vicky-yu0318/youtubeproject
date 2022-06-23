@@ -6,7 +6,6 @@ import './assets/tailwind.css'
 import i18n from './i18n'
 import $IsEnterDark from '@/methods/IsEnterDark'
 
-
 // 加入loading套件
 // https://www.npmjs.com/package/vue-loading-overlay //import內容參考文件
 import Loading from 'vue-loading-overlay'
