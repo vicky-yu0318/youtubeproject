@@ -2,7 +2,7 @@
 import req from '@/service/axiosInstance'
 
 
-// 取得會員資料
+// 取得會員資料 (try)
 export const getUserInfoApi = (data) => {
   return req("post", 'api/selectOtcUserPublicByToken', data)
 }

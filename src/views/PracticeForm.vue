@@ -27,9 +27,11 @@
                 class="block text-sm w-full placeholder-slate-400 focus:outline-none disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500
                 border border-slate-300 rounded-md shadow-sm x-[20px] py-[13px] mr-[10px] sm:w-[108px] sm:mr-[20px]
                 focus:ring-3 focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+                v-model="userData.countryCode"
               >
-              <option value="">+886</option>
-              <option value="">+99</option>
+              <!-- v-model綁定的是value -->
+              <option value="+886">+886</option>
+              <option value="+99">+99</option>
               </select>
 
               <UserField
@@ -41,8 +43,8 @@
                 class="placeholder:text-[#ddd] block w-[100%] sm:w-[428px] px-[20px] py-[13px] bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400 focus:outline-none disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
               ></UserField>
             </div>
-            <UserErrorMessage name="電話" :class="{ invalid: errors['電話'] }" class="text-blue-600" >錯誤訊息</UserErrorMessage>
-            <UserErrorMessage name="電話" class="text-blue-600" >錯誤訊息</UserErrorMessage>
+            <!-- 因為是slot 不用給文字，否則會改掉預設內容 -->
+            <UserErrorMessage name="電話" :class="{ 'invalid': errors['電話'] }" ></UserErrorMessage>
           </div>
           <!-- 密碼 -->
           <label class="block pt-[10px]">
@@ -77,17 +79,24 @@
       </div>
     </div>
   </section>
+  <button class="bg-blue-300" @click="postApi">打api</button>
+  <PracticeFormCom :userData="userData"></PracticeFormCom>
 </template>
 
 <script>
-import { ref, reactive } from "vue";
+import PracticeFormCom from "@/components/PracticeFormCom.vue";
+import { reactive, ref } from "vue";
+// (1) 要用的api方法匯入
+import { getUserInfoApi } from '@/methods/apiMethods/user'
 
 export default {
+  components: {
+    PracticeFormCom
+  },
   setup() {
     const showTelList = ref(false);
-    // 需要表單資料
     const userData = reactive({
-        countryCode: '',
+        countryCode: '886',
         tel: '0988',
       }
     )
@@ -96,10 +105,44 @@ export default {
       console.log("表單送出");
     };
 
+
+    // ================================
+    // (2) 準備要打api的資料 data (文件中表示只有token是require) 及 function
+    // 打api 拿會員資料 (用vicky註冊token測試)
+    // {token: '08150893-74ba-409f-813a-7f7e7f4b3986'}
+    // const token = computed(() => store.state.user.userToken ) //先帶假的
+    const token = ref('08150893-74ba-409f-813a-7f7e7f4b3986')
+    // 測試過errorCode＝0
+
+    // (3)透過axiosInstance.js. env拿url api 打出去 
+    const getUserInfo = async () => {
+      try {
+        let temp = { token: token.value }
+        // console.log(temp);
+        const { data } = await getUserInfoApi(temp)
+        console.log(data)
+        // 404 500 error
+        // if ( data.errorCode !== 0 ) {
+          // store.commit('user/RESET_USERINFO')
+          // localStorage.removeItem('token')
+          // localStorage.removeItem('invitationCode')
+          // router.push({ name: 'index' })
+        // }
+        // store.commit('user/SET_USERINFO', data.data)
+        // prefixName.value = data.data.publicNickname
+        // prefixName.value = prefixName.value.charAt(0)
+      } catch (error) {
+        console.log('error :', error)
+      }
+    }
+
+    getUserInfo()
+    // ================================
+
     return {
       submitForm,
       showTelList,
-      userData
+      userData,
     };
   },
 };

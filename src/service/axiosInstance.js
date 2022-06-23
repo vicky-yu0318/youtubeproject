@@ -6,9 +6,10 @@ import axios from "axios"
 
 // baseURL是API的主要Domain
 const axiosInstance = axios.create({
-    baseURL: process.env.BASE_URL || process.env.API_URL, // url = base url + request url
+  baseURL: process.env.API_URL,
+    // baseURL: process.env.BASE_URL || process.env.API_URL, // url = base url + request url
     // withCredentials: true, // send cookies when cross-domain requests
-    timeout: 120 * 1000 // request timeout
+  timeout: 120 * 1000 // request timeout
 })
 
 // axios 攔截器
