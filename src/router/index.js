@@ -35,6 +35,16 @@ const routes = [
     path: '/form-pratice',
     name: 'form-pratice',
     component: () => import('../views/PracticeForm.vue')
+  },
+  {
+    path: '/search',
+    name: 'search',
+    component: () => import('../views/SearchView.vue')
+  },
+  {
+    path: '/table',
+    name: 'table',
+    component: () => import('../views/TableView.vue')
   }
 ]
 
