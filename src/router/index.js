@@ -51,7 +51,27 @@ const routes = [
     name: 'landingPage',
     component: () => import('../views/LandingPage.vue')
   },
-
+  {
+    path: '/layout',
+    name: 'layout',
+    component: () => import('../views/MainLayout.vue')
+  },
+  {
+    path: '/cut',
+    name: 'cut',
+    component: () => import('../views/CutView.vue')
+  },
+  // 會有優惠碼
+  {
+    path: '/buy',
+    name: 'buy',
+    component: () => import('../views/BuyPageView.vue')
+  },
+  {
+    path: '/buy/:id',
+    name: 'buy',
+    component: () => import('../views/BuyPageView.vue')
+  }
 ]
 
 const router = createRouter({

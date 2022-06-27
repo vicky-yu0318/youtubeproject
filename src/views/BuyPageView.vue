@@ -1,0 +1,3 @@
+<template>
+    but page
+</template>

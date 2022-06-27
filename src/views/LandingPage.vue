@@ -21,7 +21,8 @@
           <h1 class="sr-only">point</h1>
         </a>
         <!-- hameburger -->
-        <button @click="aa">
+        <button @click="showMainNav = !showMainNav">
+          <!-- @click="aa" -->
           <!-- @click="showMainNav = !showMainNav" -->
           <i
             class="fa-solid fa-bars text-[30px] lg:hidden hover:text-blue-300 hover:opacity-50 transition duration-1000 ease-out"
