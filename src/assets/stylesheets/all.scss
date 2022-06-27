@@ -1,6 +1,7 @@
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 50px;
+    overflow-x: hidden;
 
     &::-webkit-scrollbar {
         width: 10px;

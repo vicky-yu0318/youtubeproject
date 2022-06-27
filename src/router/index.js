@@ -45,7 +45,13 @@ const routes = [
     path: '/table',
     name: 'table',
     component: () => import('../views/TableView.vue')
-  }
+  },
+  {
+    path: '/landingPage',
+    name: 'landingPage',
+    component: () => import('../views/LandingPage.vue')
+  },
+
 ]
 
 const router = createRouter({
